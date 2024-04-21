@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Sandbox</title>
+    <meta charset="UTF-8" />
+  </head> 
+
+  <body>
+    <div id="app">
+      <form method="post" id="form-1">
+        <div class="group-input">
+          <label for="username">Username: </label>
+          <input type="text" name="username" id="username" />
+        </div>
+        <div class="group-input">
+          <label for="password">Password: </label>
+          <input type="password" name="password" id="password" />
+        </div>
+        <button id="submit-btn" type="submit">Login</button>
+      </form>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('form-1').onsubmit = (e) => {
+          e.preventDefault();
+          let form = e.target;
+          console.log(form, 'form');
+          let body = new FormData(form);
+          for (var pair of body.entries()) {
+            console.log(pair[0] + ', ' + pair[1]);
+          }
+        };
+      });
+    </script>
+    
+  </body>
+</html>
